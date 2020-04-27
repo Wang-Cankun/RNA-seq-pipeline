@@ -16,7 +16,7 @@ bioc_packages <- c(
     "DESeq2","EnhancedVolcano"
   )
 cran_packages <- c(
-  "enrichR","ggpubr","pheatmap","ggplot2","VennDiagram"
+  "enrichR","ggpubr","pheatmap","ggplot2","VennDiagram","stringr"
 )
 bioc_np <- bioc_packages[!(bioc_packages %in% installed.packages()[,"Package"])]
 cran_np <- cran_packages[!(cran_packages %in% installed.packages()[,"Package"])]
