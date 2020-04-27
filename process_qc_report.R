@@ -1,7 +1,7 @@
 
 #setwd("/fs/project/PCON0005/cankun/yutong_zhao")
 library(stringr)
-all_files <- list.files(path="log")
+all_files <- list.files(path="log",pattern = "[12].out")
 fastp_result <- matrix()
 hisat2_result <- matrix()
 for (i in 1:length(all_files)) {
