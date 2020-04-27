@@ -1,0 +1,8 @@
+# global variables. 
+# ls > ../fastq_list.txt
+while read FASTQ1 FASTQ2 NAME
+do
+   echo $NAME
+   qsub -v "R1=$FASTQ1,R2=$FASTQ2,NAME=$NAME" -N "$NAME" run_primary_alignment.sh 
+   sleep 0.1s
+done < fastq_list.txt
