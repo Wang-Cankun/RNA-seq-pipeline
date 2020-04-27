@@ -27,7 +27,7 @@ if(length(cran_np)) {
 }
 
 if(length(bioc_np)) {
-  install.packages(BiocManager::install(bioc_np))
+  BiocManager::install(bioc_np)
 }
 
 #library(RColorBrewer)
