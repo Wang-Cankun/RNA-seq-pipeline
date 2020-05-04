@@ -276,11 +276,12 @@ pheatmap(
 
 The first column, baseMean, is a just the average of the normalized count values, divided by the size factors, taken over all samples in the DESeqDataSet.
 
-The column log2FoldChange is the effect size estimate. It tells us how much the gene’s expression seems to have changed due to treatment in comparison to untreated samples. In another words, This value is reported on a logarithmic scale to base 2: for example, a log2 fold change of 1.5 means that the gene’s expression is increased by a multiplicative factor of $2^{1.5} \approx 2.82$.
+The column log2FoldChange is the effect size estimate. It tells us how much the gene’s expression seems to have changed due to treatment in comparison to untreated samples. In another words, This value is reported on a logarithmic scale to base 2: for example, a log2 fold change of 1.5 means that the gene’s expression is increased by a multiplicative factor of $2^{1.5} \approx 2.82$. A positive log2 fold-change values show that the gene is more highly expressed in the first group and is labelled as 'up-regulated'.
 
 lfcSE, the standard error estimate for the log2 fold change estimate, meaning its uncertainty associated with fold changes.
 
 The purpose of a test for differential expression is to test whether the data provides sufficient evidence to conclude that this value is really different from zero. DESeq2 performs for each gene a hypothesis test to see whether evidence is sufficient to decide against the **null hypothesis that there is zero effect of the treatment on the gene and that the observed difference between treatment and control was merely caused by experimental variability**. As usual in statistics, the result of this test is reported as a p value, and it is found in the column pvalue. **Remember that a p value indicates the probability that a fold change as strong as the observed one, or even stronger, would be seen under the situation described by the null hypothesis**.
+
 
 
 ## 7 dpw lam wound tissues vs sci wound tissues
@@ -332,6 +333,9 @@ DT::datatable(as.data.frame(resLFC), extensions = 'FixedColumns',
 
 ### MA-plot
 
+
+The MA-plot visualize the log2 fold-change (M) on Y-axis and log of the mean of expression counts of samples (A) on X-axis. Genes with similar expression values in both compared groups will cluster around M=0 value (grey dots). i.e genes expressed with no significant differences in two groups. Up-regulated genes are colored in red, and down-regulated genes are colored in blue. I annotated 10 genes with smallest p-values in the figure. 
+
 ```{r, fig.width=10, fig.height=10,echo=F,message=T,warning=F}
 
 ggmaplot(resLFC,
@@ -346,6 +350,9 @@ ggmaplot(resLFC,
 ```
 
 ### Volcano-plot
+
+The volcano plot visualize the log of the p-value on Y-axis and log fold change of samples on X-axis. The dashed line is the cutoff to annotate differentially expressed genes, in the report the cut-off for log2 fold-change is >|1|; the cut-off for P value is 0.05. This results in data points with low p values (highly significant) appearing toward the top of the plot. Points that are found toward the top of the plot that are far to either the left- or right-hand sides represent values that display large magnitude fold changes (hence being left or right of center) as well as high statistical significance. I annotated 10 genes with the smallest p-values (5 from up-regulated and 5 from down-regulated) in the figure.
+
 
 ```{r, fig.width=10, fig.height=10,echo=F,message=T,warning=F}
 
