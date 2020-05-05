@@ -381,7 +381,7 @@ EnhancedVolcano(resLFC,
 #enriched_combined <- enrichr(rownames(resLFC[which(resLFC$padj < 0.05),]),dbs)
 
 # This add log2foldchange threshold.
-enriched_combined <- enrichr(rownames(resLFC[which(resLFC$padj < 0.05 & resLFC$log2FoldChange > 1.5),]),dbs)
+enriched_combined <- enrichr(rownames(resLFC[which(resLFC$padj < 0.05 & abs(resLFC$log2FoldChange) > 1.5),]),dbs)
 
 # output top 20 enriched terms
 DT::datatable(head(enriched_combined$GO_Biological_Process_2018,n=20)[,c(-3,-5,-6,-7)], extensions = c('FixedColumns','Buttons'),
