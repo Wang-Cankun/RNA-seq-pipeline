@@ -73,7 +73,10 @@ Limma is actually better than DESeq2 in terms of controlling false positives: [R
 
 * Differential expression (DE) analysis was performed using the DESeq2 package. Genes were ranked for evidence of DE by their adjusted P values (smallest to largest). The table shows differentially expressed genes with absolute log fold-change > 1.5
 * The identified differentially expressed genes with absolute log fold-change > 1.5 and Benjamini–Hochberg adjusted P values < 0.05 were submited to Enrichr v2.1 R package for enrichment analysis. The term databases are KEGG_2019_Mouse, GO_Molecular_Function_2018, GO_Biological_Process_2018, GO_Cellular_Component_2018 provided in Enrichr.
-* Plots were generated using ggplot2 R package.
+* Volcano Plot was generated using EnhancedVolcano R package.
+* MA-Plot was generated using ggpubr R package.
+
+
 
 # Pre-processing
 
