@@ -405,7 +405,7 @@ DT::datatable(head(enriched_combined$GO_Molecular_Function_2018,n=20)[,c(-3,-5,-
 
 ```{r}
 
-DT::datatable(head(enriched_combined$KEGG_2019_Mouse,n=20)[,c(-3,-5,-6,-7)], extensions = c('FixedColumns','Buttons'),
+DT::datatable(head(enriched_combined$KEGG_2019_Human,n=20)[,c(-3,-5,-6,-7)], extensions = c('FixedColumns','Buttons'),
               options = list(
                 pageLength = 5,
                 scrollX = TRUE,
