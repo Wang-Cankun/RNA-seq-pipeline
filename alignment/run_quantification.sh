@@ -1,18 +1,15 @@
 #!/usr/bin/bash
-#PBS -l walltime=00:15:00
-#PBS -l nodes=1:ppn=16
-#PBS -l mem=16GB
-#PBS -m n
-#PBS -o log/quantification.out
-#PBS -j oe
-#PBS -S /usr/bin/bash
-#PBS -A PAS1475
+#SBATCH --account PCON0022
+#SBATCH --time=00:30:00
+#SBATCH --nodes=1 
+#SBATCH --ntasks=16
+#SBATCH --mem=32GB
 
 tools=/fs/project/PAS1475/tools
 
 ###############################################
 #### Set working directory and reference below: (Remember to remove the foreslash '/')
-wd=/fs/project/PCON0005/cankun/yutong_zhao
+wd=/fs/scratch/PAS1475/cankun/awc59/mapping
 gtf=$tools/genome/Homo_sapiens.GRCh38.99.gtf
 #gtf=$tools/genome/Mus_musculus.GRCm38.99.gtf
 
@@ -28,7 +25,7 @@ cd $bamdir
 ls
 bamfiles="$(find $bam_dir -maxdepth 2 -name "*.sorted.bam" -print)"
 
-featureCounts -T 16 -g gene_name --primary -a $gtf -o $wd/result/out.txt $bamfiles
+/fs/project/PAS1475/tools/subread/bin/featureCounts -T 16 -g gene_name --primary -a $gtf -o $wd/result/out.txt $bamfiles
 
 # remove all large alignment files when finished
-rm $bam_dir/*
+#rm $bam_dir/*

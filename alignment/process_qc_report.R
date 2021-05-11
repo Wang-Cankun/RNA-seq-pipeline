@@ -1,7 +1,7 @@
 
 #setwd("/fs/project/PCON0005/cankun/yutong_zhao")
 library(stringr)
-all_files <- list.files(path="log",pattern = "[12].out")
+all_files <- list.files(path="log",pattern = "[123].out")
 fastp_result <- matrix()
 hisat2_result <- matrix()
 for (i in 1:length(all_files)) {
@@ -60,7 +60,7 @@ hisat2_result <- hisat2_result[,seq(dim(hisat2_result)[2],1)]
 colnames(hisat2_result)[1] <- c("hisat2_category")
 
 dir.create("result",showWarnings = F)
-write.csv(hisat2_result,"result/reads_alignment_report.csv",row.names = F)
+write.csv(hisat2_result,"reads_alignment_report.csv",row.names = F)
 
-write.csv(fastp_result,"result/reads_quality_control_report.csv",row.names = F)
+write.csv(fastp_result,"reads_quality_control_report.csv",row.names = F)
 
